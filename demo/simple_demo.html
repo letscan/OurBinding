@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>OurBinding Demo</title>
+
+<div id="scores">
+  <table name="scores" formatter="itemList:item_template">
+    <tr>
+      <th>NAME</th>
+      <th>SCORE</th>
+    </tr>
+    <tr class="item_template">
+      <td name="name"></td>
+      <td name="score"></td>
+    </tr>
+  </table>
+</div>
+
+<div id="comment">
+  <p>
+    <label>TITLE</label><br>
+    <input name="title">
+  </p>
+  <p>
+    <lable>CONTENT</lable><br>
+    <textarea name="content"></textarea>
+  </p>
+  <button id="load_demo">LOAD</button>
+</div>
+
+<script src="jquery-3.2.1.js"></script>
+<script src="ourbinding.js"></script>
+<script>
+$(function () {
+  $('#load_demo').click(function() {
+    var comment = ourBinding.loadData($('#comment'));
+    console.log(comment);
+    alert('See console log.');
+  });
+  var data = {
+    scores: [
+      {name: 'Alice', score: 95},
+      {name: 'Bob', score: 67}
+    ]
+  };
+  ourBinding.bindData(data, $('#scores'));
+});
+</script>
